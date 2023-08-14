@@ -19,19 +19,19 @@ WHITE = (255,255,255)
 
 # Title and Icons
 pygame.display.set_caption("Space Invaders")
-icon = pygame.image.load('spaceship.jfif')
+icon = pygame.image.load('Assets/spaceship.jfif')
 pygame.display.set_icon(icon)
 #Back ground
-background = pygame.image.load('background1.jfif')
+background = pygame.image.load('Assets/background1.jfif')
 background = pygame.transform.scale(background,(800,600))
 #Background Sound
-mixer.music.load('background.wav')
+mixer.music.load('Assets/background.wav')
 #mixer.music.play(-1)#-1 for play continously
 #if you remove -1 it will play 
 
 
 #Player
-playerImg = pygame.image.load('player3.png')
+playerImg = pygame.image.load('Assets/player3.png')
 playerX=370
 playerY = 480
 playerX_change=0
@@ -39,7 +39,7 @@ pv=5
 
 #Enemy
 S=28
-enemyImg_original= pygame.image.load('enemy3.png')
+enemyImg_original= pygame.image.load('Assets/enemy3.png')
 enemyImg_original = pygame.transform.scale(enemyImg_original,(S,S))
 enemyX= []
 enemyY_change=[]
@@ -61,7 +61,7 @@ for i in range(num_of_enemies):
 #ready = you can't see the bullet on the screen
 #Fire - The bullet is currently moving
 S=28
-bulletImg = pygame.image. load('bullet.png')
+bulletImg = pygame.image. load('Assets/bullet.png')
 bulletImg = pygame.transform.scale(bulletImg,(S,S))
 bulletX=0
 bulletY = 480
@@ -73,13 +73,13 @@ bullet_state ="ready"
 
 #Score
 score_value =0
-font = pygame.font.Font('freesansbold.ttf',32)
+font = pygame.font.Font('Assets/freesansbold.ttf',32)
 
 textX = 10
 textY = 10
 
 #Game over text
-over_font = pygame.font.Font('freesansbold.ttf',256)
+over_font = pygame.font.Font('Assets/freesansbold.ttf',256)
 
 def draw_border():
     pygame.draw.line(screen,BLUE,(0,480),(800,480),1)
@@ -151,7 +151,7 @@ while running :
                 bulletY = 480
                 bullet_state = "ready"
                 if bullet_state == "ready":
-                    bullet_Sound = mixer.Sound('laser.wav')
+                    bullet_Sound = mixer.Sound('Assets/laser.wav')
                     bullet_Sound.play()
                     bulletX = playerX                    
                     fire_bullet(bulletX,bulletY)
@@ -195,7 +195,7 @@ while running :
     #Collision 
         collision = isCollision(enemyX[i],enemyY[i],bulletX,bulletY)
         if collision:
-            explosion_Sound = mixer.Sound('explosion.wav')
+            explosion_Sound = mixer.Sound('Assets/explosion.wav')
             explosion_Sound.play()
             bulletY = 480
             bullet_state="ready"
